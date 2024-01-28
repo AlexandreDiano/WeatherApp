@@ -16,7 +16,7 @@ function App() {
   const [coordinates, setCoordinates] = useState({lat: -25.533816, lng: -49.2072163});
   const [sense, setSense] = useState<number>()
 
-  const API_KEY = import.meta.env.VITE_API_KEY
+  const API_KEY = import.meta.env.OPEN_CAGE_API_KEY
 
   const handleGeocode = async () => {
     try {
