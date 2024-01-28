@@ -16,7 +16,7 @@ function App() {
   const [coordinates, setCoordinates] = useState({lat: -25.533816, lng: -49.2072163});
   const [sense, setSense] = useState<number>()
 
-  const API_KEY = import.meta.env.OPEN_CAGE_API_KEY
+  const API_KEY = process.env.OPEN_CAGE_API_KEY
 
   const handleGeocode = async () => {
     try {
@@ -90,7 +90,7 @@ function App() {
 
       <div className="flex flex-col justify-center content-center">
         <img className="w-48 ml-5 absolute right-1/4"
-             src={`../public/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
+             src={`/public/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
              alt="weater type"/>
         <h1 className="text-9xl font-black">{prevision?.data.instant.details.air_temperature} °C</h1>
         {/*@ts-ignore*/}
