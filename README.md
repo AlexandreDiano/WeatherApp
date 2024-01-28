@@ -2,7 +2,7 @@
 
 # Weather App
 
-This is a weather forecast application developed in React with TypeScript, utilizing the [api.met.no](https://api.met.no/) API for weather information and [OpenCage](https://opencagedata.com/) for obtaining user coordinates. The project also makes use of Tailwind CSS for styles and includes the "ShadCn" library for enhanced shadows.
+This is a weather forecast application developed in React with TypeScript, utilizing the [api.met.no](https://api.met.no/) API for weather information and [OpenCage](https://opencagedata.com/) for obtaining user coordinates. The project also makes use of Tailwind CSS for styles and includes the "ShadCn" library for enhanced UI components.
 
 ## Features
 
