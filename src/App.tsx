@@ -18,7 +18,7 @@ function App() {
 
   const API_KEY = process.env.OPEN_CAGE_API_KEY
 
-console.log('api', API_KEY)
+console.log('api', process.env.OPEN_CAGE_API_KEY)
   
   const handleGeocode = async () => {
     try {
