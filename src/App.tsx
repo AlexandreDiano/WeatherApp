@@ -90,7 +90,7 @@ function App() {
 
       <div className="flex flex-col justify-center content-center">
         <img className="w-48 ml-5 absolute right-1/4"
-             src={`/public/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
+             src={`/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
              alt="weater type"/>
         <h1 className="text-9xl font-black">{prevision?.data.instant.details.air_temperature} °C</h1>
         {/*@ts-ignore*/}
