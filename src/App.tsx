@@ -18,6 +18,8 @@ function App() {
 
   const API_KEY = process.env.OPEN_CAGE_API_KEY
 
+console.log('api', API_KEY)
+  
   const handleGeocode = async () => {
     try {
       const response = await axios.get('https://api.opencagedata.com/geocode/v1/json', {
