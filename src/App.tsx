@@ -15,17 +15,13 @@ function App() {
   const [address, setAddress] = useState<string>('');
   const [coordinates, setCoordinates] = useState({lat: -25.533816, lng: -49.2072163});
   const [sense, setSense] = useState<number>()
-
-  const API_KEY = process.env.OPEN_CAGE_API_KEY
-
-console.log('api', process.env.OPEN_CAGE_API_KEY)
   
   const handleGeocode = async () => {
     try {
       const response = await axios.get('https://api.opencagedata.com/geocode/v1/json', {
         params: {
           q: address,
-          key: API_KEY,
+          key: process.env.OPEN_CAGE_API_KEY,
         },
       })
 
@@ -79,6 +75,10 @@ console.log('api', process.env.OPEN_CAGE_API_KEY)
     handleWindChill();
   }, [data]);
 
+useEffect(() => {
+  console.log('sense', sense)
+}, [sense])
+  
   return (
     <div className="container">
       <header>
