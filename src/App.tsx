@@ -76,7 +76,8 @@ function App() {
   }, [data]);
 
 useEffect(() => {
-  console.log('sense', sense)
+  console.log('sense', sense);
+  console.log('api', process.env.OPEN_CAGE_API_KEY)
 }, [sense])
   
   return (
