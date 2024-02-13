@@ -21,7 +21,7 @@ function App() {
       const response = await axios.get('https://api.opencagedata.com/geocode/v1/json', {
         params: {
           q: address,
-          key: process.env.VITE_OPEN_CAGE_API_KEY,
+          key: import.meta.env.VITE_OPEN_CAGE_API_KEY,
         },
       })
 
