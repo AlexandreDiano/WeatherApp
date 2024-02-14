@@ -1,49 +1,49 @@
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,} from "@/components/ui/tooltip"
-import {Input} from "@/components/ui/input.tsx";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import IUnits from "@/DTO/Units.ts";
 import ITimeserie from "@/DTO/Timeserie.ts";
 import IResponse from "@/DTO/Response.ts";
 import {weatherTypes} from "@/utils/weatherTypes.ts";
-import {Search} from 'lucide-react'
+import opencage from 'opencage-api-client';
+import {Autocomplete} from "@/components/Autocomplete.tsx";
+import {ILocation} from "@/DTO/Location.ts";
+import initLocation from './startLocation.json'
 
 function App() {
   const [data, setData] = useState<ITimeserie[]>([])
   const [units, setUnits] = useState<IUnits>()
   const [prevision, setPrevision] = useState<ITimeserie>()
   const [address, setAddress] = useState<string>('');
-  const [coordinates, setCoordinates] = useState({lat: -25.533816, lng: -49.2072163});
+  const [location, setLocation] = useState<ILocation>(initLocation)
   const [sense, setSense] = useState<number>()
-  
+  const [autocomplete, setAutocomplete] = useState([])
+
+  const API_KEY = import.meta.env.VITE_OPEN_CAGE_API_KEY
+
   const handleGeocode = async () => {
     try {
-      const response = await axios.get('https://api.opencagedata.com/geocode/v1/json', {
-        params: {
-          q: address,
-          key: import.meta.env.VITE_OPEN_CAGE_API_KEY,
-        },
-      })
-
-      const result = response.data.results[0];
-      const {lat, lng} = result.geometry;
-
-      setCoordinates({lat, lng});
+      const p = await opencage.geocode({key: API_KEY, q: address, limit: 25})
+      setAutocomplete(p.results);
     } catch (e) {
       console.log(e)
     }
   }
 
+  useEffect(() => {
+    handleGeocode()
+  }, [address]);
+
   const fetchData = useCallback(async () => {
     try {
-      const response: IResponse = await axios.get(`https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${coordinates.lat}&lon=${coordinates.lng}&altitude=920`)
+      const response: IResponse = await axios.get(`https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${location?.geometry.lat}&lon=${location?.geometry.lng}&altitude=920`)
 
       setData(response.data.properties.timeseries)
       setUnits(response.data.properties.meta.units)
     } catch (e) {
       console.log(e)
     }
-  }, [coordinates.lat, coordinates.lng])
+  }, [location.geometry.lat, location.geometry.lng])
 
   const handleWeatherTime = () => {
     const currentIso = new Date().toISOString()
@@ -68,7 +68,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [coordinates]);
+  }, [location]);
 
   useEffect(() => {
     handleWeatherTime();
@@ -77,18 +77,18 @@ function App() {
 
   return (
     <div className="container">
-      <header>
-        <Input type="text" placeholder="Search Location..."
-               value={address}
-               onChange={e => setAddress(e.target.value)}
-               className="border-2 w-1/3 h-12 font-black italic text-cyan-100 text-lg placeholder:font-black placeholder:italic placeholder:text-cyan-950"/>
-
-        <button type="submit" onClick={handleGeocode}><Search className="ml-5 w-6 h-6"/></button>
+      <header className="flex flex-col">
+        <Autocomplete suggestions={autocomplete} setAddress={setAddress} setLocation={setLocation}/>
+        <h2 className="mt-20 text-cyan-950 font-black text-xl">{location?.formatted}</h2>
+        <a href={location.annotations.OSM.url} target="_blank" className="text-cyan-200 font-black text-xl underline">See
+          on
+          Map</a>
       </header>
 
+
       <div className="flex flex-col justify-center content-center">
-        <img className="w-48 ml-5 absolute right-1/4"
-             src={`/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
+        <img className="w-48 ml-5 absolute sm:top-64 sm:right-10 xl:top-auto xl:right-40 2xl:right-72 3xl:right-10"
+             src={`../public/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
              alt="weater type"/>
         <h1 className="text-9xl font-black">{prevision?.data.instant.details.air_temperature} °C</h1>
         {/*@ts-ignore*/}

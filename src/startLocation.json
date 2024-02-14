@@ -1,0 +1,113 @@
+{
+  "annotations": {
+    "DMS": {
+      "lat": "25° 32' 1.73760'' S",
+      "lng": "49° 12' 25.97868'' W"
+    },
+    "MGRS": "22JFS8013874726",
+    "Maidenhead": "GG54jl51dv",
+    "Mercator": {
+      "x": -5477722.262,
+      "y": -2923043.488
+    },
+    "OSM": {
+      "edit_url": "https://www.openstreetmap.org/edit?relation=297533#map=17/-25.53382/-49.20722",
+      "note_url": "https://www.openstreetmap.org/note/new#map=17/-25.53382/-49.20722&layers=N",
+      "url": "https://www.openstreetmap.org/?mlat=-25.53382&mlon=-49.20722#map=17/-25.53382/-49.20722"
+    },
+    "UN_M49": {
+      "regions": {
+        "AMERICAS": "019",
+        "BR": "076",
+        "LATIN_AMERICA": "419",
+        "SOUTH_AMERICA": "005",
+        "WORLD": "001"
+      },
+      "statistical_groupings": [
+        "LEDC"
+      ]
+    },
+    "callingcode": 55,
+    "currency": {
+      "decimal_mark": ",",
+      "html_entity": "R$",
+      "iso_code": "BRL",
+      "iso_numeric": "986",
+      "name": "Brazilian Real",
+      "smallest_denomination": 5,
+      "subunit": "Centavo",
+      "subunit_to_unit": 100,
+      "symbol": "R$",
+      "symbol_first": 1,
+      "thousands_separator": "."
+    },
+    "flag": "��",
+    "geohash": "6gmn8r8qsz8nsu3ekbmk",
+    "qibla": 70.13,
+    "roadinfo": {
+      "drive_on": "right",
+      "speed_in": "km/h"
+    },
+    "sun": {
+      "rise": {
+        "apparent": 1707901380,
+        "astronomical": 1707896520,
+        "civil": 1707899940,
+        "nautical": 1707898260
+      },
+      "set": {
+        "apparent": 1707947940,
+        "astronomical": 1707952740,
+        "civil": 1707949380,
+        "nautical": 1707951060
+      }
+    },
+    "timezone": {
+      "name": "America/Sao_Paulo",
+      "now_in_dst": 0,
+      "offset_sec": -10800,
+      "offset_string": "-0300",
+      "short_name": "BRT"
+    },
+    "what3words": {
+      "words": "backpack.thorax.survivor"
+    },
+    "wikidata": "Q478818"
+  },
+  "bounds": {
+    "northeast": {
+      "lat": -25.4622396,
+      "lng": -48.8425255
+    },
+    "southwest": {
+      "lat": -25.8320317,
+      "lng": -49.2727074
+    }
+  },
+  "components": {
+    "ISO_3166-1_alpha-2": "BR",
+    "ISO_3166-1_alpha-3": "BRA",
+    "ISO_3166-2": [
+      "BR-PR"
+    ],
+    "_category": "place",
+    "_normalized_city": "São José dos Pinhais",
+    "_type": "city",
+    "city": "São José dos Pinhais",
+    "continent": "South America",
+    "country": "Brasil",
+    "country_code": "br",
+    "county": "Região Metropolitana de Curitiba",
+    "municipality": "Região Geográfica Imediata de Curitiba",
+    "region": "Região Sul",
+    "state": "Paraná",
+    "state_code": "PR",
+    "state_district": "Região Geográfica Intermediária de Curitiba"
+  },
+  "confidence": 2,
+  "formatted": "São José dos Pinhais, Região Metropolitana de Curitiba, Brasil",
+  "geometry": {
+    "lat": -25.533816,
+    "lng": -49.2072163
+  }
+}

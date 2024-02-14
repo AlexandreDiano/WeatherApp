@@ -76,7 +76,7 @@
     }
 
     header {
-        @apply fixed top-5 flex justify-center content-center w-full
+        @apply fixed top-5 flex justify-center content-center items-center w-full
     }
 
     footer {
