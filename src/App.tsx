@@ -73,7 +73,7 @@ function App() {
   useEffect(() => {
     handleWeatherTime();
     handleWindChill();
-  }, [data]);
+  }, [data, location]);
 
   return (
     <div className="container">
