@@ -80,10 +80,11 @@
     }
 
     footer {
-        @apply fixed bottom-10 flex
+        @apply fixed bottom-10 flex justify-center items-center
     }
 
     .container {
         @apply flex justify-center content-center p-5 w-full h-screen items-center
     }
+
 }

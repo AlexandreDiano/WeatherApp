@@ -9,8 +9,11 @@ import opencage from 'opencage-api-client';
 import {Autocomplete} from "@/components/Autocomplete.tsx";
 import {ILocation} from "@/DTO/Location.ts";
 import initLocation from './startLocation.json'
+import {MoveDown} from 'lucide-react'
 
 function App() {
+  const API_KEY = import.meta.env.VITE_OPEN_CAGE_API_KEY
+
   const [data, setData] = useState<ITimeserie[]>([])
   const [units, setUnits] = useState<IUnits>()
   const [prevision, setPrevision] = useState<ITimeserie>()
@@ -19,9 +22,9 @@ function App() {
   const [sense, setSense] = useState<number>()
   const [autocomplete, setAutocomplete] = useState([])
 
-  const API_KEY = import.meta.env.VITE_OPEN_CAGE_API_KEY
-
   const handleGeocode = async () => {
+    if (!address)
+      return
     try {
       const p = await opencage.geocode({key: API_KEY, q: address, limit: 25})
       setAutocomplete(p.results);
@@ -85,7 +88,6 @@ function App() {
           Map</a>
       </header>
 
-
       <div className="flex flex-col justify-center content-center">
         <img className="w-48 ml-5 absolute sm:top-64 sm:right-10 xl:top-auto xl:right-40 2xl:right-72 3xl:right-10"
              src={`/weather_icons/${prevision?.data.next_1_hours.summary.symbol_code}.svg`}
@@ -144,7 +146,10 @@ function App() {
               <div className="flex justify-center content-center flex-col mx-10">
                 <h2 className="text-3xl">Wind Direction</h2>
                 <h2
-                  className="text-center text-2xl">{prevision?.data.instant.details.wind_from_direction} {units?.wind_from_direction}</h2>
+                  className="text-center flex flex-col items-center text-xl">
+                  <MoveDown strokeWidth="3"
+                            className={`rotate-[${prevision?.data.instant.details.wind_from_direction.toString()}deg]`}/>{prevision?.data.instant.details.wind_from_direction} {units?.wind_from_direction}
+                </h2>
               </div>
             </TooltipTrigger>
             <TooltipContent className="max-w-xl bg-cyan-800">
